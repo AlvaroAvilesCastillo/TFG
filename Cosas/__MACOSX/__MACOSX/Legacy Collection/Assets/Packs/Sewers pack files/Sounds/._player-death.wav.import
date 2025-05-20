@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcsxxs635gryi"
+path="res://.godot/imported/._player-death.wav-0aa6046531be6c120e5d9f4f25e109e9.sample"
+
+[deps]
+
+source_file="res://Cosas/__MACOSX/__MACOSX/Legacy Collection/Assets/Packs/Sewers pack files/Sounds/._player-death.wav"
+dest_files=["res://.godot/imported/._player-death.wav-0aa6046531be6c120e5d9f4f25e109e9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

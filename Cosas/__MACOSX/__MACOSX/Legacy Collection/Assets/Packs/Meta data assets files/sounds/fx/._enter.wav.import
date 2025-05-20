@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://comvda1tqfo3a"
+path="res://.godot/imported/._enter.wav-a86631c09095de181f24cba15a916f73.sample"
+
+[deps]
+
+source_file="res://Cosas/__MACOSX/__MACOSX/Legacy Collection/Assets/Packs/Meta data assets files/sounds/fx/._enter.wav"
+dest_files=["res://.godot/imported/._enter.wav-a86631c09095de181f24cba15a916f73.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

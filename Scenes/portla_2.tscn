@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm5c6bhyarmtn"]
+
+[ext_resource type="Texture2D" uid="uid://d0dsctfkkl4ba" path="res://Assets/Environments/Portales/sprite-sheet.png" id="1_1018t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1018t"]
+radius = 32.0
+height = 80.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phcqb"]
+atlas = ExtResource("1_1018t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5msx"]
+atlas = ExtResource("1_1018t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iieaf"]
+atlas = ExtResource("1_1018t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8myck"]
+atlas = ExtResource("1_1018t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doh1l"]
+atlas = ExtResource("1_1018t")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ombpy"]
+atlas = ExtResource("1_1018t")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6xc4"]
+atlas = ExtResource("1_1018t")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t525k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phcqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5msx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iieaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8myck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doh1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ombpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6xc4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="portla2" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1018t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 2)
+sprite_frames = SubResource("SpriteFrames_t525k")
+animation = &"idle"
+autoplay = "idle"

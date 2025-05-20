@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bew24g0o4qtj8"]
+
+[ext_resource type="Script" uid="uid://cnnsfcaafb7q8" path="res://Scripts/level_mountain.gd" id="1_h2c1n"]
+[ext_resource type="Texture2D" uid="uid://chv0nku04h87f" path="res://Cosas/Glacial-mountains-parallax-background_vnitti/Layers/sky_lightened.png" id="1_rr2jj"]
+[ext_resource type="Texture2D" uid="uid://cjdaobke8h4s7" path="res://Cosas/Glacial-mountains-parallax-background_vnitti/Layers/glacial_mountains_lightened.png" id="2_h2c1n"]
+[ext_resource type="Texture2D" uid="uid://bieocvcyf47q8" path="res://Cosas/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="3_vkel5"]
+[ext_resource type="Texture2D" uid="uid://8jap5nx2yjvn" path="res://Cosas/Glacial-mountains-parallax-background_vnitti/Layers/glacial_mountains.png" id="4_b24uq"]
+
+[node name="level_mountain" type="Node2D"]
+script = ExtResource("1_h2c1n")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="SkyLightened" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(324, 15)
+scale = Vector2(1.6875, 1.32407)
+texture = ExtResource("1_rr2jj")
+
+[node name="CloudsMg3" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(456, -106)
+scale = Vector2(1, 1.24074)
+texture = ExtResource("3_vkel5")
+
+[node name="CloudsMg2" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(192, -88)
+texture = ExtResource("3_vkel5")
+
+[node name="GlacialMountainsLightened" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(392, 30)
+scale = Vector2(1.33333, 1.2037)
+texture = ExtResource("2_h2c1n")
+
+[node name="GlacialMountains" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(328, 24)
+scale = Vector2(1.6875, 1.26852)
+texture = ExtResource("4_b24uq")
+
+[node name="mapa_fisico" type="TileMapLayer" parent="."]
+
+[node name="mapa_fondo" type="TileMapLayer" parent="."]

@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b36x0mi68t36c"
+valid=false
+
+[deps]
+
+source_file="res://Cosas/__MACOSX/__MACOSX/MountainDuskGodot/Music/._summer nights.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp52wx8g1o27d"
+path="res://.godot/imported/._pickup.wav-73d963c3788c951e23faaa9e2f4b0414.sample"
+
+[deps]
+
+source_file="res://Cosas/__MACOSX/__MACOSX/Legacy Collection/Assets/Packs/grotto_escape_pack/Base pack/sounds/._pickup.wav"
+dest_files=["res://.godot/imported/._pickup.wav-73d963c3788c951e23faaa9e2f4b0414.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
