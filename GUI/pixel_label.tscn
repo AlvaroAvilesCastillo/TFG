@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dirxkeql1ufvg"]
+
+[ext_resource type="FontFile" uid="uid://crvp8lo54cq1f" path="res://Assets/Fuentes/WDXLLubrifontTC-Regular.ttf" id="1_27tof"]
+
+[node name="Label" type="Label"]
+offset_left = 432.0
+offset_top = 160.0
+offset_right = 720.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("1_27tof")
+theme_override_font_sizes/font_size = 100
+text = "texto"
+horizontal_alignment = 1

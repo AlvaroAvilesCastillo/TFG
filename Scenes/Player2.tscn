@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://bsiwhbbkte14m"]
+[gd_scene load_steps=51 format=3 uid="uid://bsiwhbbkte14m"]
 
 [ext_resource type="Script" uid="uid://dc6d8kri2muap" path="res://Scripts/player_2.gd" id="1_dn4j3"]
 [ext_resource type="Texture2D" uid="uid://cf2jqfbyqkc0y" path="res://Assets/Characters/Warrior_Sheet-Effect.png" id="1_u8k5t"]
+[ext_resource type="AudioStream" uid="uid://bo4m7l8gcojgt" path="res://Assets/Characters/Sword Attack 1.ogg" id="3_kfthp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdqio"]
 atlas = ExtResource("1_u8k5t")
@@ -204,7 +205,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qvr3e")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 7.0
 }, {
@@ -242,7 +243,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ctsx2")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 8.0
 }, {
@@ -262,7 +263,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nk0ak")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -323,7 +324,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1irps")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -363,9 +364,10 @@ script = ExtResource("1_dn4j3")
 position = Vector2(0.75, -7.875)
 scale = Vector2(1.21014, 1.47807)
 sprite_frames = SubResource("SpriteFrames_qml05")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.44632
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -11)
@@ -373,3 +375,6 @@ shape = SubResource("CapsuleShape2D_ljt6f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-6, -11)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kfthp")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsaq6rm43qo3j"]
+
+[ext_resource type="Texture2D" uid="uid://b2o4cqsbviata" path="res://Assets/Collectibles/flag animation.png" id="1_j2wod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1qfn"]
+size = Vector2(89, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5uf"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6whob"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7krg"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx0tn"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjtap"]
+atlas = ExtResource("1_j2wod")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7gqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6whob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7krg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx0tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjtap")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="bandera" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13.5, 7.5)
+shape = SubResource("RectangleShape2D_v1qfn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7gqg")
+animation = &"idle"

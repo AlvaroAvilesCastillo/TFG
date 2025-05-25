@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqjei03nw4fx7"]
+
+[ext_resource type="Script" uid="uid://d6l47e6kn7dt" path="res://Scripts/menu_eleccion.gd" id="1_5w5yu"]
+[ext_resource type="PackedScene" uid="uid://dm2wnirai3lxq" path="res://GUI/pixel_panel.tscn" id="2_cm87o"]
+[ext_resource type="PackedScene" uid="uid://dirxkeql1ufvg" path="res://GUI/pixel_label.tscn" id="3_3mbtk"]
+[ext_resource type="PackedScene" uid="uid://dfronwjjqx64h" path="res://GUI/pixel_button.tscn" id="4_a156g"]
+[ext_resource type="Texture2D" uid="uid://dt3nhf4h0n0yb" path="res://Assets/GUI/boton_hover.PNG" id="5_cvhbc"]
+[ext_resource type="Texture2D" uid="uid://qqr0jo8iy0jr" path="res://Assets/GUI/boton_pressed.PNG" id="6_56ucb"]
+[ext_resource type="Texture2D" uid="uid://d0j3pfnatk86v" path="res://Imagenes/warrior1.PNG" id="7_5w5yu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gc0qc"]
+texture = ExtResource("5_cvhbc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46yk4"]
+texture = ExtResource("6_56ucb")
+
+[node name="menu_eleccion" type="CanvasLayer"]
+script = ExtResource("1_5w5yu")
+
+[node name="Panel" parent="." instance=ExtResource("2_cm87o")]
+offset_top = 80.0
+offset_bottom = 704.0
+
+[node name="Label" parent="." instance=ExtResource("3_3mbtk")]
+offset_left = 192.0
+offset_top = 136.0
+offset_right = 1041.0
+offset_bottom = 377.0
+theme_override_font_sizes/font_size = 80
+text = "Selecciona tu
+ personaje"
+
+[node name="Button_Rigth" parent="." instance=ExtResource("4_a156g")]
+offset_left = 312.0
+offset_top = 352.0
+offset_right = 472.0
+offset_bottom = 456.0
+theme_override_font_sizes/font_size = 81
+theme_override_styles/hover = SubResource("StyleBoxTexture_gc0qc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46yk4")
+text = "<-"
+
+[node name="Button_Ok" parent="." instance=ExtResource("4_a156g")]
+offset_left = 520.0
+offset_top = 504.0
+offset_right = 680.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 81
+theme_override_styles/hover = SubResource("StyleBoxTexture_gc0qc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46yk4")
+text = "Ok
+"
+
+[node name="Button_Left" parent="." instance=ExtResource("4_a156g")]
+offset_left = 744.0
+offset_top = 352.0
+offset_right = 904.0
+offset_bottom = 456.0
+theme_override_font_sizes/font_size = 81
+theme_override_styles/hover = SubResource("StyleBoxTexture_gc0qc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46yk4")
+text = "->"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("7_5w5yu")
+
+[connection signal="pressed" from="Button_Rigth" to="." method="_on_button_rigth_pressed"]
+[connection signal="pressed" from="Button_Ok" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="Button_Left" to="." method="_on_button_left_pressed"]

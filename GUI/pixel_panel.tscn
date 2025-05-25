@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2wnirai3lxq"]
+
+[ext_resource type="Texture2D" uid="uid://cbb7qqopkoger" path="res://Assets/GUI/panel2.PNG" id="1_b1wtx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuuuu"]
+texture = ExtResource("1_b1wtx")
+
+[node name="Panel" type="Panel"]
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 1008.0
+offset_bottom = 696.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_xuuuu")

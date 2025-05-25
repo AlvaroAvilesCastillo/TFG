@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d12hc7nbr7muv"
+path="res://.godot/imported/Of Far Different Nature - Unruly Beat (CC-BY).ogg-01147ec1a9cf7ebf213222f80365fd84.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Of Far Different Nature - LOOP BOX #1 (CC-BY 4.0)/Of Far Different Nature - Unruly Beat (CC-BY).ogg"
+dest_files=["res://.godot/imported/Of Far Different Nature - Unruly Beat (CC-BY).ogg-01147ec1a9cf7ebf213222f80365fd84.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

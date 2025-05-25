@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7nhv1cicu3ou"
+path="res://.godot/imported/Light Torch 2.wav-2ccbd068c5938f924d00e8d4594629cf.sample"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Torch/Light Torch 2.wav"
+dest_files=["res://.godot/imported/Light Torch 2.wav-2ccbd068c5938f924d00e8d4594629cf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,8 +1,7 @@
 extends Node2D
 
-
 var name_player = "player1"
-#Donde eliges al personaje 
+
 
 #Datos de guardado
 var save_path = "user://save_game.dat"

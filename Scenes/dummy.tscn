@@ -1,0 +1,107 @@
+[gd_scene load_steps=19 format=3 uid="uid://c4gftm27ttua2"]
+
+[ext_resource type="Texture2D" uid="uid://d1vo8kjk3m5jg" path="res://Assets/Characters/Dummy/1.png" id="1_3l5gb"]
+[ext_resource type="Script" uid="uid://rsdhcegyt3xe" path="res://Scripts/dummy.gd" id="1_c85ca"]
+[ext_resource type="Texture2D" uid="uid://c0oolfs4qjimq" path="res://Assets/Characters/Dummy/2.png" id="2_ye6wy"]
+[ext_resource type="Texture2D" uid="uid://cx7a5c4ryjy5w" path="res://Assets/Characters/Dummy/3.png" id="3_esgbc"]
+[ext_resource type="Texture2D" uid="uid://c578wycwjkec0" path="res://Assets/Characters/Dummy/4.png" id="4_mpbwv"]
+[ext_resource type="Texture2D" uid="uid://blc3bwxefsofm" path="res://Assets/Characters/Dummy/5.png" id="5_w3v5p"]
+[ext_resource type="Texture2D" uid="uid://dw5kukf75xxbf" path="res://Assets/Characters/Dummy/6.png" id="6_l3088"]
+[ext_resource type="Texture2D" uid="uid://bpiqt6rwpip12" path="res://Assets/Characters/Dummy/7.png" id="7_gkwur"]
+[ext_resource type="Texture2D" uid="uid://clopis2rcbuiq" path="res://Assets/Characters/Dummy/8.png" id="8_yu1vq"]
+[ext_resource type="Texture2D" uid="uid://b53xuofl2ed7o" path="res://Assets/Characters/Dummy/9.png" id="9_srf1d"]
+[ext_resource type="Texture2D" uid="uid://ypdjotyh58w" path="res://Assets/Characters/Dummy/10.png" id="10_kr7ie"]
+[ext_resource type="Texture2D" uid="uid://6hgnbnq6llbw" path="res://Assets/Characters/Dummy/11.png" id="11_qhfps"]
+[ext_resource type="Texture2D" uid="uid://bjurjgjq2yrfu" path="res://Assets/Characters/Dummy/12.png" id="12_twjq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf018"]
+size = Vector2(38, 38)
+
+[sub_resource type="Animation" id="Animation_rb4un"]
+resource_name = "Hit"
+length = 1.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ye6wy"), ExtResource("3_esgbc"), ExtResource("4_mpbwv"), ExtResource("5_w3v5p"), ExtResource("6_l3088"), ExtResource("7_gkwur"), ExtResource("8_yu1vq"), ExtResource("9_srf1d"), ExtResource("10_kr7ie"), ExtResource("11_qhfps"), ExtResource("12_twjq0")]
+}
+
+[sub_resource type="Animation" id="Animation_3hf5v"]
+resource_name = "Idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3l5gb")]
+}
+
+[sub_resource type="Animation" id="Animation_ph2o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3l5gb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjjlv"]
+_data = {
+&"Hit": SubResource("Animation_rb4un"),
+&"Idle": SubResource("Animation_3hf5v"),
+&"RESET": SubResource("Animation_ph2o2")
+}
+
+[node name="Dummy" type="CharacterBody2D" groups=["attack", "enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_c85ca")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 512
+
+[node name="Colision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11, -8)
+shape = SubResource("RectangleShape2D_pf018")
+debug_color = Color(0.990258, 0, 0.280561, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(12, -7.5)
+scale = Vector2(2.5, 1.68182)
+texture = ExtResource("1_3l5gb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_bjjlv")
+}
+autoplay = "Idle"
+speed_scale = 2.0
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_pf018")
+debug_color = Color(0.990258, 0, 0.280561, 0.42)
+
+[connection signal="animation_finished" from="Area2D/Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfronwjjqx64h"]
+
+[ext_resource type="FontFile" uid="uid://crvp8lo54cq1f" path="res://Assets/Fuentes/WDXLLubrifontTC-Regular.ttf" id="1_0b2o2"]
+[ext_resource type="Texture2D" uid="uid://c2sv7lehb7h4e" path="res://Assets/GUI/boton.PNG" id="2_wxg5o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8r2is"]
+texture = ExtResource("2_wxg5o")
+
+[node name="Button" type="Button"]
+offset_left = 528.0
+offset_top = 480.0
+offset_right = 664.0
+offset_bottom = 584.0
+theme_override_fonts/font = ExtResource("1_0b2o2")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxTexture_8r2is")
+text = "btn"

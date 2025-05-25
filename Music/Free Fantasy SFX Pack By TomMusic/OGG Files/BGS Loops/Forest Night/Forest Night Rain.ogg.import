@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ci6vyro3errvm"
+path="res://.godot/imported/Forest Night Rain.ogg-4f56283b55d693ec67292b6c110cc10a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Forest Night/Forest Night Rain.ogg"
+dest_files=["res://.godot/imported/Forest Night Rain.ogg-4f56283b55d693ec67292b6c110cc10a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

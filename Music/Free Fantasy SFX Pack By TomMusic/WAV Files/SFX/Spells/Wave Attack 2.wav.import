@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ck7q7cpgkacx6"
+path="res://.godot/imported/Wave Attack 2.wav-188aab45a0c41f16bff3233424de45ae.sample"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Spells/Wave Attack 2.wav"
+dest_files=["res://.godot/imported/Wave Attack 2.wav-188aab45a0c41f16bff3233424de45ae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

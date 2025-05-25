@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b64cthhd8il0j"
+path="res://.godot/imported/Stone Run 2.ogg-bc20b3aa6dc7cf40fc39991b7b1ccc6c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Run 2.ogg"
+dest_files=["res://.godot/imported/Stone Run 2.ogg-bc20b3aa6dc7cf40fc39991b7b1ccc6c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

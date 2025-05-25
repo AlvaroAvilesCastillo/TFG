@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://2p5wi66u2esl" path="res://Assets/Environments/Portales/Dimensional_Portal.png" id="1_81842"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnk6o"]
+radius = 32.0
+height = 80.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jb3vm"]
 atlas = ExtResource("1_81842")
 region = Rect2(0, 0, 32, 32)
@@ -52,12 +56,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnk6o"]
-radius = 32.0
-height = 80.0
-
 [node name="portal1" type="Area2D"]
-collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, -32)
+shape = SubResource("CapsuleShape2D_vnk6o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, -30)
@@ -65,7 +68,3 @@ scale = Vector2(4, 2.625)
 sprite_frames = SubResource("SpriteFrames_fep7m")
 animation = &"idle"
 autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(48, -32)
-shape = SubResource("CapsuleShape2D_vnk6o")

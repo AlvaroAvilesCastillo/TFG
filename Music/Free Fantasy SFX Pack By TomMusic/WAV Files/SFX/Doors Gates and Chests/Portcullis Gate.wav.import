@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buiqfwksjy4is"
+path="res://.godot/imported/Portcullis Gate.wav-4d1de0d6e4144d96f6d569c9d80595af.sample"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Doors Gates and Chests/Portcullis Gate.wav"
+dest_files=["res://.godot/imported/Portcullis Gate.wav-4d1de0d6e4144d96f6d569c9d80595af.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

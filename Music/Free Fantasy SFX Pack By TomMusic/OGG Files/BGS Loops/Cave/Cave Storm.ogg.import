@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bw0ya3p5rv0ee"
+path="res://.godot/imported/Cave Storm.ogg-7dd705005ee7f0c293cbf4e66f272994.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Cave/Cave Storm.ogg"
+dest_files=["res://.godot/imported/Cave Storm.ogg-7dd705005ee7f0c293cbf4e66f272994.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

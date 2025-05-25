@@ -227,22 +227,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_cxdsi")
 }],
 "loop": true,
-"name": &"run",
+"name": &"walk",
 "speed": 8.0
 }]
 
-[sub_resource type="Animation" id="Animation_mo1ky"]
-resource_name = "Ataque"
-length = 5.0
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bs3c"]
-_data = {
-&"Ataque": SubResource("Animation_mo1ky")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mo1ky"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1ky"]
+size = Vector2(25, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajnmf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mo1ky"]
+radius = 73.43
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bs3c"]
+height = 38.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-32, -163)
@@ -253,29 +251,45 @@ script = ExtResource("1_mo1ky")
 [node name="Animaciones" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animaciones" groups=["enemy"]]
-position = Vector2(28, 155)
+position = Vector2(30, 154)
 scale = Vector2(1, 0.96)
 sprite_frames = SubResource("SpriteFrames_7pj37")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animaciones"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6bs3c")
-}
-
-[node name="Sprite2D" type="Sprite2D" parent="Animaciones/AnimationPlayer"]
-position = Vector2(-32, -163)
-
 [node name="AreaHIT" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHIT"]
-position = Vector2(31, 164)
-shape = SubResource("CapsuleShape2D_mo1ky")
+position = Vector2(59, 163)
+shape = SubResource("RectangleShape2D_mo1ky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31, 164)
+position = Vector2(32, 161)
 shape = SubResource("CapsuleShape2D_ajnmf")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AreaVision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVision"]
+position = Vector2(32, 162)
+shape = SubResource("CircleShape2D_mo1ky")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(32, 162)
+shape = SubResource("CapsuleShape2D_6bs3c")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(50, 161)
+target_position = Vector2(0, 20)
+collision_mask = 5
+collide_with_areas = true
+
+[connection signal="body_entered" from="AreaHIT" to="." method="_on_area_hit_body_entered"]
+[connection signal="body_exited" from="AreaHIT" to="." method="_on_area_hit_body_exited"]
+[connection signal="body_entered" from="AreaVision" to="." method="_on_area_vision_body_entered"]
+[connection signal="body_exited" from="AreaVision" to="." method="_on_area_vision_body_exited"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwj4wj6okxinp"
+path="res://.godot/imported/Rock Wall 1.ogg-cc8dd8db1ed18bc923153475e4102f04.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Spells/Rock Wall 1.ogg"
+dest_files=["res://.godot/imported/Rock Wall 1.ogg-cc8dd8db1ed18bc923153475e4102f04.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

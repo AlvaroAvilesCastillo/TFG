@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bc60aj056g3gh"
+path="res://.godot/imported/Of Far Different Nature - Dream Factory (CC-BY).ogg-874f1050f59150d8501febbbcdc3dc17.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Of Far Different Nature - LOOP BOX #1 (CC-BY 4.0)/Of Far Different Nature - Dream Factory (CC-BY).ogg"
+dest_files=["res://.godot/imported/Of Far Different Nature - Dream Factory (CC-BY).ogg-874f1050f59150d8501febbbcdc3dc17.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

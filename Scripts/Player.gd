@@ -1,77 +1,183 @@
 extends CharacterBody2D
-class_name Player
+class_name PlayerCharacter
 
-var axis : Vector2 = Vector2.ZERO
-var death : bool = false
+@export_category("Movement")
+@export var speed: int = 128
+@export var gravity: int = 16
+@export var jump_force: int = 450
 
-@export var gui : CanvasLayer
+@export_category("Combat")
+@export var max_life: int = 3
+@export var attack_damage: int = 1 
+@export var invulnerability_time: float = 1.5
 
-@export var speed : int = 128
-@export var gravity : int = 16
-@export var jump : int = 450
-@export var life : int = 3
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox: Area2D = $Hitbox
 
+var life: int = max_life
+var attacking: bool = false
+var invulnerable: bool = false
+var death: bool = false
+var facing_right: bool = true  # Variable para rastrear la dirección del jugador
 
-func _process(_delta):
-	match death:
-		true:
-			death_ctrl()
-		false:
-			motion_crtl()
-				
+signal player_hit(current_life: int, max_life: int)
+signal player_died
 
-func _input(event):
-	if not death and is_on_floor() and event.is_action_pressed("ui_accept") :
-		jump_ctrl(1)
+func _ready() -> void:
+	# Conectar señales
+	if not hitbox.is_connected("area_entered", Callable(self, "_on_hitbox_area_entered")):
+		hitbox.area_entered.connect(Callable(self, "_on_hitbox_area_entered"))
 
-func get_axis() -> Vector2: #Funcion para retomar la direccion
-	axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	return axis.normalized()
+	var area_salida = get_node_or_null("AreaSalida")
+	if area_salida and not area_salida.is_connected("area_entered", Callable(self, "_on_out_of_map_area_entered")):
+		area_salida.area_entered.connect(Callable(self, "_on_out_of_map_area_entered"))
 
-func motion_crtl() -> void:
-	'''MOVIMIENTO'''
-	#Linea para controlar hacia donde mira el personaje
-	if not get_axis().x == 0:
-		$AnimatedSprite2D.scale.x = get_axis().x
+	anim_sprite.animation_finished.connect(Callable(self, "_on_animated_sprite_animation_finished"))
 	
-	velocity.x = get_axis().x * speed
+	# Añadir al grupo de jugadores para facilitar la detección
+	add_to_group("player")
+	
+	# Establecer posición inicial del hitbox
+	update_hitbox_position()
+
+func _process(_delta: float) -> void:
+	if death:
+		return
+	handle_input()
+	update_animation()
+
+func handle_input() -> void:
+	if death or attacking:
+		return
+
+	var input_dir = Vector2(
+		int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")),
+		int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	).normalized()
+
+	# Actualizar la dirección del jugador y la posición del hitbox
+	if input_dir.x > 0:
+		facing_right = true
+		update_hitbox_position()
+	elif input_dir.x < 0:
+		facing_right = false
+		update_hitbox_position()
+
+	velocity.x = input_dir.x * speed
+
+	if is_on_floor():
+		if Input.is_action_just_pressed("Jump Controller"):
+			velocity.y = -jump_force
+
+		if Input.is_action_just_pressed("Attack Controller"):
+			start_attack()
+
 	velocity.y += gravity
-	
-	move_and_slide()
-	
-	'''ANIMACIONES'''
-	match is_on_floor():
-		true: #Si toca el suelo entra aqui para ver si corre o no corre
-			if not get_axis().x == 0:
-				$AnimatedSprite2D.set_animation("run")
-			else:
-				$AnimatedSprite2D.set_animation("idle")
-		false:#Si no toca el suelo entra aqui
-			if velocity.y < 0:#Si velocity.y es menor que 0 significa que esta subiendo
-				$AnimatedSprite2D.set_animation("jump")
-			else:#Si no esta en caida
-				$AnimatedSprite2D.set_animation("jump")
-
-func death_ctrl() -> void:
-	velocity.x = 0 #Quitamos la direccion del eje x
-	velocity.y += gravity #Si muere no se queda flotando en el aire
 	move_and_slide()
 
-func jump_ctrl(power : float) -> void:
-	velocity.y = -jump * power
-	#Audio/Salto.play()
+# Función para actualizar la posición del hitbox según la dirección
+func update_hitbox_position() -> void:
+	if facing_right:
+		hitbox.position.x = 0
+	else:
+		hitbox.position.x = -75
 
-func damage_ctrl() -> void:
+func update_animation() -> void:
+	if death:
+		if anim_sprite.animation != "death":
+			anim_sprite.play("death")
+	elif attacking:
+		if anim_sprite.animation != "attack":
+			anim_sprite.play("attack")
+	elif invulnerable and anim_sprite.animation != "hit":
+		anim_sprite.play("hit")
+	elif not is_on_floor():
+		if anim_sprite.animation != "jump":
+			anim_sprite.play("jump")
+	elif abs(velocity.x) > 0:
+		if anim_sprite.animation != "run":
+			anim_sprite.play("run")
+	else:
+		if anim_sprite.animation != "idle":
+			anim_sprite.play("idle")
+
+	if velocity.x != 0:
+		anim_sprite.scale.x = sign(velocity.x)
+		# Actualizar la dirección del jugador basado en la velocidad
+		facing_right = velocity.x > 0
+		update_hitbox_position()
+
+func start_attack() -> void:
+	if attacking:
+		return
+	attacking = true
+	hitbox.monitoring = true
+	anim_sprite.play("attack")
+	$Hitbox/CollisionShape2D.disabled = false
+	
+	# Asegurar que el hitbox esté en la posición correcta al atacar
+	update_hitbox_position()
+
+func _on_animated_sprite_animation_finished() -> void:
+	if anim_sprite.animation == "attack":
+		attacking = false
+		$Hitbox/CollisionShape2D.disabled = true
+		hitbox.monitoring = false
+		update_animation()
+	elif anim_sprite.animation == "hit":
+		update_animation()
+
+# Método para recibir daño
+func take_damage(amount: int) -> void:
+	if invulnerable or death:
+		return
+	
+	life -= amount
+	invulnerable = true
+	anim_sprite.play("hit")
+	
+	# Emitir señal para actualizar UI
+	emit_signal("player_hit", life, max_life)
+
+	if life <= 0:
+		die()
+	else:
+		await get_tree().create_timer(invulnerability_time).timeout
+		invulnerable = false
+
+func die() -> void:
 	death = true
-	$AnimatedSprite2D.set_animation("death")
+	anim_sprite.play("death")
+	# Emitir señal de muerte para que otros nodos puedan reaccionar
+	emit_signal("player_died")
+	
+	# Esperar a que termine la animación de muerte
+	await anim_sprite.animation_finished
+	# Esperar un segundo adicional
+	await get_tree().create_timer(1.0).timeout
+	# Cambiar a la escena del menú principal
+	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")
 
-#func _on_hit_point_body_entered(body):
-#	if body is enemy and velocity.y >= 0:
-#		#$Audio/Hit.play()
-#		body.damage_ctrl(1)
-#		jump_ctrl(0.75)
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if attacking:
+		# Verificar si el área pertenece a un enemigo y puede recibir daño
+		if area.is_in_group("enemy") and area.has_method("take_damage"):
+			area.take_damage(attack_damage)
+			print("Golpeando área enemiga directamente")
+		elif area.get_parent() and area.get_parent().is_in_group("enemy"):
+			if area.get_parent().has_method("take_damage"):
+				area.get_parent().take_damage(attack_damage)
+				print("Golpeando al padre del área enemiga")
+			else:
+				print("El padre no tiene método take_damage")
+		else:
+			print("Área golpeada: ", area.name, " - Padre: ", area.get_parent().name if area.get_parent() else "ninguno")
 
-func _on_sprite_animation_finished():
-	if $AnimatedSprite2D.animation == "Death":
-		gui.game_over()
-		
+func _on_out_of_map_area_entered(_area: Area2D) -> void:
+	take_damage(1)
+
+# Método para restaurar vida
+func heal(amount: int) -> void:
+	life = min(life + amount, max_life)
+	# Emitir señal para actualizar UI
+	emit_signal("player_hit", life, max_life)

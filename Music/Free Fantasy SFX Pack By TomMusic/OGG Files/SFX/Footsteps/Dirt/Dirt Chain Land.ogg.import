@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://m2q4b4apym4r"
+path="res://.godot/imported/Dirt Chain Land.ogg-c54a5df004d4b80aa2aee54d28b96563.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Dirt/Dirt Chain Land.ogg"
+dest_files=["res://.godot/imported/Dirt Chain Land.ogg-c54a5df004d4b80aa2aee54d28b96563.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

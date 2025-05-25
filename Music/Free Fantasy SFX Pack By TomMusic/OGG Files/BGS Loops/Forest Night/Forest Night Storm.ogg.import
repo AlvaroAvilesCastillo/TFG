@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bb0k15u1qbumc"
+path="res://.godot/imported/Forest Night Storm.ogg-72b361ec1868d3280d849f8230ea6c5c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Forest Night/Forest Night Storm.ogg"
+dest_files=["res://.godot/imported/Forest Night Storm.ogg-72b361ec1868d3280d849f8230ea6c5c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

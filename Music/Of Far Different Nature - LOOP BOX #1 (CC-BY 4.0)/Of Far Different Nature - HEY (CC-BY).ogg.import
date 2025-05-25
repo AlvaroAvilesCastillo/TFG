@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://oxwl1n85vlqx"
+path="res://.godot/imported/Of Far Different Nature - HEY (CC-BY).ogg-775fda65aaf88ab59cbf2d3d6f686f6b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Of Far Different Nature - LOOP BOX #1 (CC-BY 4.0)/Of Far Different Nature - HEY (CC-BY).ogg"
+dest_files=["res://.godot/imported/Of Far Different Nature - HEY (CC-BY).ogg-775fda65aaf88ab59cbf2d3d6f686f6b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

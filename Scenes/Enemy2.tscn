@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://e6p1stoetuxk"]
+[gd_scene load_steps=36 format=3 uid="uid://e6p1stoetuxk"]
 
 [ext_resource type="Script" uid="uid://bl48sc7sck8gh" path="res://Scripts/enemy_2.gd" id="1_0qeg4"]
 [ext_resource type="Texture2D" uid="uid://clmspsw0r8vm1" path="res://Cosas/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_7mh8y"]
@@ -203,8 +203,17 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mh8y"]
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qeg4"]
+size = Vector2(51, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdyx1"]
+radius = 100.62
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdyx1"]
+size = Vector2(24, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78tey"]
+size = Vector2(29, 49)
 
 [node name="Enemy2" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(-43, -155)
@@ -212,13 +221,47 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_0qeg4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animaciones" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animaciones" groups=["enemy2"]]
 position = Vector2(36, 155)
 sprite_frames = SubResource("SpriteFrames_7xu01")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.271848
+frame = 7
+frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(43, 154)
-shape = SubResource("CapsuleShape2D_7mh8y")
+[node name="AreaHIT" type="Area2D" parent="."]
+position = Vector2(-4, 5)
+collision_layer = 2048
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHIT"]
+position = Vector2(85.5, 150.5)
+shape = SubResource("RectangleShape2D_0qeg4")
+debug_color = Color(0.853564, 0.366409, 0.118533, 0.42)
+
+[node name="AreaVision" type="Area2D" parent="."]
+position = Vector2(44, 159)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVision"]
+shape = SubResource("CircleShape2D_fdyx1")
+debug_color = Color(0.795208, 0.517211, 0.978661, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(41, 156)
+shape = SubResource("RectangleShape2D_fdyx1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(45, 156)
+shape = SubResource("RectangleShape2D_78tey")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(70, 180)
+target_position = Vector2(0, 20)
+collision_mask = 5
+collide_with_areas = true
